@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../services/employee.service';
 import { City } from 'src/models/city';
 import { Employee } from 'src/models/employee';
+import { ConfirmDialogService } from '../confirm-dialog/confirm-dialog.service';
+import { NotificationService } from '../notification.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -18,8 +20,8 @@ export class AddEmployeeComponent implements OnInit {
   errorMessage: any;
   cityList: City[];
 
-  constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
-    private _employeeService: EmployeeService, private _router: Router) {
+  constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute, private notifyService: NotificationService,
+    private _employeeService: EmployeeService, private _router: Router, private confirmdialogService: ConfirmDialogService) {
     if (this._avRoute.snapshot.params['id']) {
       this.employeeId = this._avRoute.snapshot.params['id'];
     }
@@ -54,20 +56,36 @@ export class AddEmployeeComponent implements OnInit {
     }
 
     if (this.title === 'Create') {
-      this._employeeService.saveEmployee(this.employeeForm.value)
-        .subscribe(() => {
-          this._router.navigate(['/dashboard']);
-        }, error => console.error(error));
+      this.confirmdialogService.openConfirmDialog("Are you sure you want to add the employee information?")
+        .afterClosed().subscribe(res => {
+          if (res) {
+            this._employeeService.saveEmployee(this.employeeForm.value)
+              .subscribe(() => {
+                this.showToasterSuccess();
+                this._router.navigate(['/fetch-employee']);
+              }, error => console.error(error));
+          }
+        });
     } else if (this.title === 'Edit') {
-      this._employeeService.updateEmployee(this.employeeForm.value)
-        .subscribe(() => {
-          this._router.navigate(['/dashboard']);
-        }, error => console.error(error));
+      this.confirmdialogService.openConfirmDialog("Are you sure you want to update the employee information?")
+        .afterClosed().subscribe(res => {
+          if (res) {
+
+            this._employeeService.updateEmployee(this.employeeForm.value)
+              .subscribe(() => {
+                this._router.navigate(['/fetch-employee']);
+              }, error => console.error(error));
+          }
+        });
     }
   }
 
   cancel() {
     this._router.navigate(['/dashboard']);
+  }
+
+  showToasterSuccess() {
+    this.notifyService.showSuccess("Employee Details added successfully !!", "")
   }
 
   get name() { return this.employeeForm.get('name'); }

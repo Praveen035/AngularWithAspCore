@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { Employee } from 'src/models/employee';
+import { Router } from '@angular/router';
+import { ConfirmDialogService } from '../confirm-dialog/confirm-dialog.service';
 
 @Component({
   selector: 'app-fetch-employee',
@@ -11,7 +13,7 @@ export class FetchEmployeeComponent {
 
   public empList: Employee[];
 
-  constructor(private _employeeService: EmployeeService) {
+  constructor(private _employeeService: EmployeeService, private _router: Router, private confirmdialogService: ConfirmDialogService) {
     this.getEmployees();
   }
 
@@ -22,11 +24,13 @@ export class FetchEmployeeComponent {
   }
 
   delete(employeeID) {
-    const ans = confirm('Do you want to delete employee with Id: ' + employeeID);
-    if (ans) {
-      this._employeeService.deleteEmployee(employeeID).subscribe(() => {
-        this.getEmployees();
-      }, error => console.error(error));
-    }
+    this.confirmdialogService.openConfirmDialog("Are you sure you want to delete the employee information?")
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this._employeeService.deleteEmployee(employeeID).subscribe(() => {
+            this.getEmployees();
+          }, error => console.error(error));
+        }
+      });
   }
 }

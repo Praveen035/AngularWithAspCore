@@ -1,5 +1,12 @@
 <div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">Dashboard</div>
+    <div class="row">
+        <div class="d-flex page__box p-3 mt-2">Dashboard
+            <!-- <button class="btn btn-danger" style="margin-left:80%;" (click)="cancel()">Cancel</button> -->
+            <a [routerLink]="['/home']" style="margin-left:80%;">
+                <mat-icon>keyboard_backspace</mat-icon>
+            </a>
+        </div>
+    </div>
     <div class="page__content shadow p-3 position-relative">
         <!-- <app-fetch-employee></app-fetch-employee> -->
         <div class="row">

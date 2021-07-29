@@ -1,5 +1,11 @@
 <div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">Dashboard</div>
+    <div class="row">
+        <div class="d-flex page__box p-3 mt-2">Dashboard
+            <a [routerLink]="['/dashboard']" style="margin-left:80%;">
+                <mat-icon>keyboard_backspace</mat-icon>
+            </a>
+        </div>
+    </div>
     <div class="page__content shadow p-3 position-relative">
         <p *ngIf="!empList"><em>Loading...</em></p>
         <p>
@@ -10,7 +16,7 @@
         <table class='table table-striped' *ngIf="empList">
             <thead>
                 <tr>
-                    <!-- <th>EmployeeId</th> -->
+                    <th></th>
                     <th>Name</th>
                     <th>Gender</th>
                     <th>Department</th>
@@ -19,7 +25,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let emp of empList">
-                    <!-- <td>{{ emp.employeeId }}</td> -->
+                    <td><input type="checkbox" value=""></td>
                     <td>{{ emp.name }}</td>
                     <td>{{ emp.gender }}</td>
                     <td>{{ emp.department }}</td>

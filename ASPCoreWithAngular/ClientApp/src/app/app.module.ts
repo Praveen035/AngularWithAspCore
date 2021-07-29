@@ -24,6 +24,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { FooterComponent } from './footer/footer.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

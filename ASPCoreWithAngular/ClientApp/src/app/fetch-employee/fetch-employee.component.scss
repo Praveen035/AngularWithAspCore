@@ -1,0 +1,11 @@
+@import "../home/home.component.scss";
+
+@mixin md-icon-size($size: 24px) {
+    font-size: $size;
+    height: $size;
+    width: $size;
+  }
+  
+  .mat-icon {
+    @include md-icon-size(35px);
+  }

@@ -59,6 +59,7 @@ export class AddEmployeeComponent implements OnInit {
       this.confirmdialogService.openConfirmDialog("Are you sure you want to add the employee information?")
         .afterClosed().subscribe(res => {
           if (res) {
+            alert(this.employeeForm.value);
             this._employeeService.saveEmployee(this.employeeForm.value)
               .subscribe(() => {
                 this.showToasterSuccess();

@@ -24,6 +24,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { FooterComponent } from './footer/footer.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { ItemDetailsComponent } from './MenuItem/item-details/item-details.component';
+import { ItemAddComponent } from './MenuItem/item-add/item-add.component';
+import { CategoryAddComponent } from './Categories/category-add/category-add.component';
+import { CategoryDetailsComponent } from './Categories/category-details/category-details.component';
 
 
 @NgModule({
@@ -40,6 +44,10 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     RegistrationComponent,
     FooterComponent,
     ConfirmDialogComponent,
+    ItemDetailsComponent,
+    ItemAddComponent,
+    CategoryAddComponent,
+    CategoryDetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -62,6 +70,10 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
       { path: 'fetch-employee', component: FetchEmployeeComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'registration', component: RegistrationComponent },
+      { path: 'ItemDetails', component: ItemDetailsComponent },
+      { path: 'ItemAdd', component: ItemAddComponent },
+      { path: 'CategoryDetails', component: CategoryDetailsComponent },
+      { path: 'CategoryAdd', component: CategoryAddComponent },
       { path: 'register-employee', component: AddEmployeeComponent },
       { path: 'employee/edit/:id', component: AddEmployeeComponent },
     ], { relativeLinkResolution: 'legacy' }),

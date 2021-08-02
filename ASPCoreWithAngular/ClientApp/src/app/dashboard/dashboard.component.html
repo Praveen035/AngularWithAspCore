@@ -2,7 +2,7 @@
     <div class="row">
         <div class="d-flex page__box p-3 mt-2">Dashboard
             <!-- <button class="btn btn-danger" style="margin-left:80%;" (click)="cancel()">Cancel</button> -->
-            <a [routerLink]="['/home']" style="margin-left:80%;">
+            <a [routerLink]="['/home']" style="margin-left:85%;">
                 <mat-icon>keyboard_backspace</mat-icon>
             </a>
         </div>
@@ -26,22 +26,26 @@
             <div class="card col-md-4">
                 <div class="card-header">Featured</div>
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
+                    <h5 class="card-title">Menu Item Details</h5>
                     <p class="card-text">
-                        With supporting text below as a natural lead-in to additional content.
+                        Add<br>
+                        Update<br>
+                        Delete
                     </p>
-                    <a href="#" class="btn btn-primary">Button</a>
+                    <a href="#" class="btn btn-primary" routerLink="/ItemDetails">Button</a>
                 </div>
                 <div class="card-footer text-muted">2 days ago</div>
             </div>
             <div class="card col-md-4">
                 <div class="card-header">Featured</div>
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
+                    <h5 class="card-title">Categories Details</h5>
                     <p class="card-text">
-                        With supporting text below as a natural lead-in to additional content.
+                        Add<br>
+                        Update<br>
+                        Delete
                     </p>
-                    <a href="#" class="btn btn-primary">Button</a>
+                    <a href="#" class="btn btn-primary" routerLink="/CategoryDetails">Button</a>
                 </div>
                 <div class="card-footer text-muted">2 days ago</div>
             </div>

@@ -1,5 +1,11 @@
 <div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">Employee</div>
+    <div class="row">
+        <div class="d-flex page__box p-3 mt-2">Employee
+            <a [routerLink]="['/fetch-employee']" style="margin-left:90%;">
+                <mat-icon>keyboard_backspace</mat-icon>
+            </a>
+        </div>
+    </div>
     <div class="page__content shadow p-3 position-relative">
         <form [formGroup]="employeeForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
 

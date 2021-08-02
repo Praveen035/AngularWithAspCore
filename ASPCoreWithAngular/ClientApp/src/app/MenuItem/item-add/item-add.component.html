@@ -1,0 +1,55 @@
+<div class="container-fluid page">
+    <div class="row">
+        <div class="d-flex page__box p-3 mt-2">Item
+            <a [routerLink]="['/ItemDetails']" style="margin-left:90%;">
+                <mat-icon>keyboard_backspace</mat-icon>
+            </a>
+        </div>
+    </div>
+    <div class="page__content shadow p-3 position-relative">
+        <form [formGroup]="itemForm" #formDir="ngForm" novalidate>
+
+            <div class="form-group row">
+                <label class=" control-label col-md-12">Name</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" formControlName="Name">
+                </div>
+                <span class="text-danger" *ngIf="Name?.invalid && formDir.submitted">
+                    Name is required.
+                </span>
+            </div>
+            <div class="form-group row">
+                <label class=" control-label col-md-12">Price</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" formControlName="Price">
+                </div>
+                <span class="text-danger" *ngIf="Price?.invalid && formDir.submitted">
+                    Price is required.
+                </span>
+            </div>
+            <div class="form-group row">
+                <label class=" control-label col-md-12">Stock Quantity</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" formControlName="Stock_Quantity">
+                </div>
+                <span class="text-danger" *ngIf="Stock_Quantity?.invalid && formDir.submitted">
+                    Stock Quantity is required.
+                </span>
+            </div>
+            <div class="form-group row">
+                <label class=" control-label col-md-12">Status</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" formControlName="Status">
+                </div>
+                <span class="text-danger" *ngIf="Status?.invalid && formDir.submitted">
+                    Status is required.
+                </span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <button type="submit" class=" btn btn-primary">Save</button>&nbsp;&nbsp;
+                <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

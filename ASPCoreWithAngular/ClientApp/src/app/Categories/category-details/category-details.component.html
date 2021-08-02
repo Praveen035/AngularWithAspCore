@@ -1,36 +1,29 @@
 <div class="container-fluid page">
     <div class="row">
-        <div class="d-flex page__box p-3 mt-2">Dashboard
+        <div class="d-flex page__box p-3 mt-2">Categories
             <a [routerLink]="['/dashboard']" style="margin-left:83%;">
                 <mat-icon>keyboard_backspace</mat-icon>
             </a>
         </div>
     </div>
     <div class="page__content shadow p-3 position-relative">
-        <p *ngIf="!empList"><em>Loading...</em></p>
+        <p *ngIf="!catList"><em>Loading...</em></p>
         <p>
-            <a [routerLink]="['/register-employee']">
+            <a [routerLink]="['/CategoryAdd']">
                 <mat-icon>add_box</mat-icon>
             </a>
         </p>
-        <table class='table table-striped' *ngIf="empList">
+        <table class='table table-striped'>
             <thead>
                 <tr>
-                    <!-- <th>EmployeeId</th> -->
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>Department</th>
-                    <!-- <th>City</th> -->
+                    <th>CategoryCode</th>
+                    <th>CategoryName</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let emp of empList">
-                    <!-- <td>{{ emp.employeeId }}</td> -->
-                    <td>{{ emp.name }}</td>
-                    <td>{{ emp.gender }}</td>
-                    <td>{{ emp.department }}</td>
-                    <!-- <td>{{ emp.city }}</td> -->
-                    <td>
+                <tr *ngFor="let emp of catList">
+                    <td>{{ emp.CategoryCode }}</td>
+                    <td>{{ emp.CategoryName }}</td>
                     <td>
                         <a [routerLink]="['/employee/edit/', emp.employeeId]">Edit</a> |
                         <a [routerLink]="" (click)="delete(emp.employeeId)">Delete</a>

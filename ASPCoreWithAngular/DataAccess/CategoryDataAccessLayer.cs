@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ASPCoreWithAngular.DataAccess
 {
-    public class CategoryDataAccessLayer :ICategory
+    public class CategoryDataAccessLayer : ICategory
     {
         private string connectionString;
         public CategoryDataAccessLayer(IConfiguration configuration)
@@ -18,7 +18,7 @@ namespace ASPCoreWithAngular.DataAccess
             connectionString = configuration["ConnectionStrings:DefaultConnection"];
         }
 
-        //To View all employees details
+        //To View all Categories details
         public IEnumerable<Category> GetAllCategories()
         {
             try
@@ -27,7 +27,7 @@ namespace ASPCoreWithAngular.DataAccess
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("spGetAllEmployees", con);
+                    SqlCommand cmd = new SqlCommand("spGetAllCategories", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     con.Open();
@@ -51,14 +51,14 @@ namespace ASPCoreWithAngular.DataAccess
             }
         }
 
-        //To Add new employee record 
+        //To Add new category record 
         public int AddCategory(Category category)
         {
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("spAddEmployee", con);
+                    SqlCommand cmd = new SqlCommand("spAddCategory", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("@CategoryCode", category.CategoryCode);
@@ -75,14 +75,14 @@ namespace ASPCoreWithAngular.DataAccess
             }
         }
 
-        //To Update the records of a particluar employee
+        //To Update the records of a particluar category
         public int UpdateCategory(Category category)
         {
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("spUpdateEmployee", con);
+                    SqlCommand cmd = new SqlCommand("spUpdateCategory", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("@CategoryId", category.CategoryId);
@@ -100,7 +100,7 @@ namespace ASPCoreWithAngular.DataAccess
             }
         }
 
-        //Get the details of a particular employee
+        //Get the details of a particular category
         public Category GetCategoryData(int id)
         {
             try
@@ -109,7 +109,7 @@ namespace ASPCoreWithAngular.DataAccess
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string sqlQuery = "SELECT * FROM tblEmployee WHERE CategoryId= " + id;
+                    string sqlQuery = "SELECT * FROM tblCategory WHERE CategoryId= " + id;
                     SqlCommand cmd = new SqlCommand(sqlQuery, con);
 
                     con.Open();
@@ -137,10 +137,10 @@ namespace ASPCoreWithAngular.DataAccess
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("spDeleteEmployee", con);
+                    SqlCommand cmd = new SqlCommand("spDeleteCategory", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@CategoryCode", id);
+                    cmd.Parameters.AddWithValue("@CategoryId", id);
 
                     con.Open();
                     cmd.ExecuteNonQuery();

@@ -26,7 +26,7 @@
             <div class="card col-md-4">
                 <div class="card-header">Featured</div>
                 <div class="card-body">
-                    <h5 class="card-title">Menu Item Details</h5>
+                    <h5 class="card-title">Item Details</h5>
                     <p class="card-text">
                         Add<br>
                         Update<br>
@@ -50,5 +50,28 @@
                 <div class="card-footer text-muted">2 days ago</div>
             </div>
         </div>
+        <div class="row">
+            <div class="card col-md-4">
+                <div class="chart-wrapper">
+                    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+                        [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+                        [plugins]="lineChartPlugins">
+                    </canvas>
+                </div>
+            </div>
+            <div class="card col-md-4">
+                <div class="chart-wrapper">
+                    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                        [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                    </canvas>
+                </div>
+            </div>
+            <div class="card col-md-4">
+                <div class="chart-wrapper">
+                    <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels"
+                        [chartType]="doughnutChartType">
+                    </canvas>
+                </div>
+            </div>
+        </div>
     </div>
-</div>

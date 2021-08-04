@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ASPCoreWithAngular.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")]   
     public class EmployeeController : Controller
     {
         private readonly IEmployee objemployee;

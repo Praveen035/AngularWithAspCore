@@ -10,24 +10,24 @@ using System.Threading.Tasks;
 
 namespace ASPCoreWithAngular.DataAccess
 {
-    public class EmployeeDataAccessLayer : IEmployee
+    public class ItemDataAccessLayer:Iitem
     {
         private string connectionString;
-        public EmployeeDataAccessLayer(IConfiguration configuration)
+        public ItemDataAccessLayer(IConfiguration configuration)
         {
             connectionString = configuration["ConnectionStrings:DefaultConnection"];
         }
 
-        //To View all employees details
-        public IEnumerable<Employee> GetAllEmployees()
+        //To View all Items details
+        public IEnumerable<Item> GetAllItems()
         {
             try
             {
-                List<Employee> lstemployee = new List<Employee>();
+                List<Item> lstItem = new List<Item>();
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("spGetAllEmployees", con);
+                    SqlCommand cmd = new SqlCommand("spGetAllItems", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     con.Open();
@@ -35,18 +35,16 @@ namespace ASPCoreWithAngular.DataAccess
 
                     while (rdr.Read())
                     {
-                        Employee employee = new Employee();
-
-                        employee.EmployeeId = Convert.ToInt32(rdr["EmployeeID"]);
-                        employee.Name = rdr["Name"].ToString();
-                        employee.Gender = rdr["Gender"].ToString();
-                        employee.Department = rdr["Department"].ToString();                      
-
-                        lstemployee.Add(employee);
+                        Item item = new Item();
+                        item.ItemId = Convert.ToInt32(rdr["ItemId"]);
+                        item.ItemCode = rdr["ItemCode"].ToString();
+                        item.ItemName = rdr["ItemName"].ToString();
+                        item.Status = rdr["ItemStatus"].ToString();
+                        lstItem.Add(item);
                     }
                     con.Close();
                 }
-                return lstemployee;
+                return lstItem;
             }
             catch
             {
@@ -54,20 +52,19 @@ namespace ASPCoreWithAngular.DataAccess
             }
         }
 
-        //To Add new employee record 
-        public int AddEmployee(Employee employee)
+        //To Add new item record 
+        public int AddItem(Item item)
         {
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("spAddEmployee", con);
+                    SqlCommand cmd = new SqlCommand("spAddItem", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@Name", employee.Name);
-                    cmd.Parameters.AddWithValue("@Gender", employee.Gender);
-                    cmd.Parameters.AddWithValue("@Department", employee.Department);
-                  
+                    cmd.Parameters.AddWithValue("@ItemCode", item.ItemCode);
+                    cmd.Parameters.AddWithValue("@ItemName", item.ItemName);
+                    cmd.Parameters.AddWithValue("@ItemStatus",item.Status);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -80,21 +77,20 @@ namespace ASPCoreWithAngular.DataAccess
             }
         }
 
-        //To Update the records of a particluar employee
-        public int UpdateEmployee(Employee employee)
+        //To Update the records of a particluar item
+        public int UpdateItem(Item item)
         {
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("spUpdateEmployee", con);
+                    SqlCommand cmd = new SqlCommand("spUpdateItem", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@EmpId", employee.EmployeeId);
-                    cmd.Parameters.AddWithValue("@Name", employee.Name);
-                    cmd.Parameters.AddWithValue("@Gender", employee.Gender);
-                    cmd.Parameters.AddWithValue("@Department", employee.Department);
-                   
+                    cmd.Parameters.AddWithValue("@ItemId", item.ItemId);
+                    cmd.Parameters.AddWithValue("@ItemCode", item.ItemCode);
+                    cmd.Parameters.AddWithValue("@ItemName", item.ItemName);
+                    cmd.Parameters.AddWithValue("@ItemStatus", item.Status);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -107,16 +103,16 @@ namespace ASPCoreWithAngular.DataAccess
             }
         }
 
-        //Get the details of a particular employee
-        public Employee GetEmployeeData(int id)
+        //Get the details of a particular item
+        public Item GetItemData(int id)
         {
             try
             {
-                Employee employee = new Employee();
+                Item item = new Item();
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string sqlQuery = "SELECT * FROM tblEmployee WHERE EmployeeID= " + id;
+                    string sqlQuery = "SELECT * FROM tblItem WHERE ItemId= " + id;
                     SqlCommand cmd = new SqlCommand(sqlQuery, con);
 
                     con.Open();
@@ -124,14 +120,13 @@ namespace ASPCoreWithAngular.DataAccess
 
                     while (rdr.Read())
                     {
-                        employee.EmployeeId = Convert.ToInt32(rdr["EmployeeID"]);
-                        employee.Name = rdr["Name"].ToString();
-                        employee.Gender = rdr["Gender"].ToString();
-                        employee.Department = rdr["Department"].ToString();
-                       
+                        item.ItemId = Convert.ToInt32(rdr["ItemId"]);
+                        item.ItemCode = rdr["ItemCode"].ToString();
+                        item.ItemName = rdr["ItemName"].ToString();
+                        item.Status = rdr["ItemStatus"].ToString();
                     }
                 }
-                return employee;
+                return item;
             }
             catch
             {
@@ -140,16 +135,16 @@ namespace ASPCoreWithAngular.DataAccess
         }
 
         //To Delete the record on a particular employee
-        public int DeleteEmployee(int id)
+        public int DeleteItem(int id)
         {
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("spDeleteEmployee", con);
+                    SqlCommand cmd = new SqlCommand("spDeleteItem", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@EmpId", id);
+                    cmd.Parameters.AddWithValue("@ItemId", id);
 
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -161,6 +156,7 @@ namespace ASPCoreWithAngular.DataAccess
             {
                 throw;
             }
-        }        
+        }
+
     }
 }

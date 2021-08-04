@@ -1,0 +1,45 @@
+<div class="container-fluid page">
+    <div class="row">
+        <div class="d-flex page__box p-3 mt-2">Category
+            <a [routerLink]="['/ItemDetails']" style="margin-left:85%;">
+                <mat-icon>keyboard_backspace</mat-icon>
+            </a>
+        </div>
+    </div>
+    <div class="page__content shadow p-3 position-relative">
+        <form [formGroup]="itemForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+            <div class="form-group row">
+                <label class=" control-label col-md-12">Item Code</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" formControlName="itemCode">
+                </div>
+                <span class="text-danger" *ngIf="itemCode?.invalid && formDir.submitted">
+                    itemCode is required.
+                </span>
+            </div>
+            <div class="form-group row">
+                <label class=" control-label col-md-12">Item Name</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" formControlName="itemName">
+                </div>
+                <span class="text-danger" *ngIf="itemName?.invalid && formDir.submitted">
+                    itemName is required.
+                </span>
+            </div>
+            <div class="form-group row">
+                <label class=" control-label col-md-12">Status</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" formControlName="status">
+                </div>
+                <span class="text-danger" *ngIf="status?.invalid && formDir.submitted">
+                    status is required.
+                </span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <button type="submit" class=" btn btn-primary">Save</button>&nbsp;&nbsp;
+                <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

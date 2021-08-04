@@ -1,27 +1,28 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Categories } from 'src/models/categories';
 import { map } from 'rxjs/operators';
+import { Item } from 'src/models/item';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
+export class ItemService {
 
   myAppUrl = '';
 
   constructor(private _http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.myAppUrl = baseUrl + 'api/Category/';
+    this.myAppUrl = baseUrl + 'api/Item/';
   }
 
-  getCategories() {
+
+  getItems() {
     return this._http.get(this.myAppUrl + 'Index').pipe(map(
       response => {
         return response;
       }));
   }
 
-  getCategoriesById(id: number) {
+  getItemById(id: number) {
     return this._http.get(this.myAppUrl + 'Details/' + id)
       .pipe(map(
         response => {
@@ -29,23 +30,23 @@ export class CategoryService {
         }));
   }
 
-  saveCategory(categories: Categories) {
-    return this._http.post(this.myAppUrl + 'Create', categories)
+  saveItem(item: Item) {
+    return this._http.post(this.myAppUrl + 'Create', item)
       .pipe(map(
         response => {
           return response;
         }));
   }
 
-  updateCategory(categories: Categories) {
-    return this._http.put(this.myAppUrl + 'Edit', categories)
+  updateItem(item: Item) {
+    return this._http.put(this.myAppUrl + 'Edit', item)
       .pipe(map(
         response => {
           return response;
         }));
   }
 
-  deleteCategory(id: number) {
+  deleteItem(id: number) {
     return this._http.delete(this.myAppUrl + 'Delete/' + id)
       .pipe(map(
         response => {

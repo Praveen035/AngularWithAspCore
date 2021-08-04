@@ -1,5 +1,6 @@
 ﻿using ASPCoreWithAngular.Interfaces;
 using ASPCoreWithAngular.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,48 +10,48 @@ using System.Threading.Tasks;
 namespace ASPCoreWithAngular.Controllers
 {
     [Route("api/[controller]")]    
-    public class CategoryController : Controller
+    public class ItemController : Controller
     {
-        private readonly ICategory objcategory;
+        private readonly Iitem objitem;
 
-        public CategoryController(ICategory _objcategory)
+        public ItemController(Iitem _objitem)
         {
-            objcategory = _objcategory;
+            objitem = _objitem;
         }
 
         [HttpGet]
         [Route("Index")]
-        public IEnumerable<Category> Index()
+        public IEnumerable<Item> Index()
         {
-            return objcategory.GetAllCategories();
+            return objitem.GetAllItems();
         }
 
         [HttpPost]
         [Route("Create")]
-        public int Create([FromBody] Category category)
+        public int Create([FromBody] Item item)
         {
-            return objcategory.AddCategory(category);
+            return objitem.AddItem(item);
         }
 
         [HttpGet]
         [Route("Details/{id}")]
-        public Category Details(int id)
+        public Item Details(int id)
         {
-            return objcategory.GetCategoryData(id);
+            return objitem.GetItemData(id);
         }
 
         [HttpPut]
         [Route("Edit")]
-        public int Edit([FromBody] Category category)
+        public int Edit([FromBody] Item item)
         {
-            return objcategory.UpdateCategory(category);
+            return objitem.UpdateItem(item);
         }
 
         [HttpDelete]
         [Route("Delete/{id}")]
         public int Delete(int id)
         {
-            return objcategory.DeleteCategory(id);
-        }
+            return objitem.DeleteItem(id);
+        }      
     }
 }

@@ -14,13 +14,6 @@ export class EmployeeService {
     this.myAppUrl = baseUrl + 'api/Employee/';
   }
 
-  getCityList() {
-    return this._http.get(this.myAppUrl + 'GetCityList')
-      .pipe(map(
-        response => {
-          return response;
-        }));
-  }
 
   getEmployees() {
     return this._http.get(this.myAppUrl + 'Index').pipe(map(

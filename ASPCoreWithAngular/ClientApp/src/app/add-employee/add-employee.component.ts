@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../services/employee.service';
-import { City } from 'src/models/city';
 import { Employee } from 'src/models/employee';
 import { ConfirmDialogService } from '../confirm-dialog/confirm-dialog.service';
 import { NotificationService } from '../notification.service';
@@ -18,7 +17,6 @@ export class AddEmployeeComponent implements OnInit {
   title = 'Create';
   employeeId: number;
   errorMessage: any;
-  cityList: City[];
 
   constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute, private notifyService: NotificationService,
     private _employeeService: EmployeeService, private _router: Router, private confirmdialogService: ConfirmDialogService) {
@@ -31,14 +29,11 @@ export class AddEmployeeComponent implements OnInit {
       name: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       department: ['', [Validators.required]],
-      // city: ['', [Validators.required]]
+      city: ['']
     })
   }
 
   ngOnInit() {
-    this._employeeService.getCityList().subscribe(
-      (data: City[]) => this.cityList = data
-    );
 
     if (this.employeeId > 0) {
       this.title = 'Edit';
@@ -59,7 +54,6 @@ export class AddEmployeeComponent implements OnInit {
       this.confirmdialogService.openConfirmDialog("Are you sure you want to add the employee information?")
         .afterClosed().subscribe(res => {
           if (res) {
-            alert(this.employeeForm.value);
             this._employeeService.saveEmployee(this.employeeForm.value)
               .subscribe(() => {
                 this.showToasterSuccess();
@@ -92,5 +86,4 @@ export class AddEmployeeComponent implements OnInit {
   get name() { return this.employeeForm.get('name'); }
   get gender() { return this.employeeForm.get('gender'); }
   get department() { return this.employeeForm.get('department'); }
-  get city() { return this.employeeForm.get('city'); }
 }

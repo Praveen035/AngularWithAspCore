@@ -24,11 +24,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { FooterComponent } from './footer/footer.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import { ItemDetailsComponent } from './MenuItem/item-details/item-details.component';
-import { ItemAddComponent } from './MenuItem/item-add/item-add.component';
 import { CategoryAddComponent } from './Categories/category-add/category-add.component';
 import { CategoryDetailsComponent } from './Categories/category-details/category-details.component';
-
+import { ItemAddComponent } from './Item/item-add/item-add.component';
+import { ItemDetailsComponent } from './Item/item-details/item-details.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -44,14 +44,15 @@ import { CategoryDetailsComponent } from './Categories/category-details/category
     RegistrationComponent,
     FooterComponent,
     ConfirmDialogComponent,
-    ItemDetailsComponent,
-    ItemAddComponent,
     CategoryAddComponent,
     CategoryDetailsComponent,
+    ItemAddComponent,
+    ItemDetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    ChartsModule,
     BrowserAnimationsModule,
     FormsModule,
     MatSidenavModule,
@@ -70,14 +71,15 @@ import { CategoryDetailsComponent } from './Categories/category-details/category
       { path: 'fetch-employee', component: FetchEmployeeComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'registration', component: RegistrationComponent },
-      { path: 'ItemDetails', component: ItemDetailsComponent },
-      { path: 'ItemAdd', component: ItemAddComponent },
       { path: 'CategoryDetails', component: CategoryDetailsComponent },
       { path: 'CategoryAdd', component: CategoryAddComponent },
+      { path: 'ItemDetails', component: ItemDetailsComponent },
+      { path: 'ItemAdd', component: ItemAddComponent },
       { path: 'register-employee', component: AddEmployeeComponent },
       { path: 'employee/edit/:id', component: AddEmployeeComponent },
+      { path: 'category/edit/:id', component: CategoryAddComponent },
+      { path: 'item/edit/:id', component: ItemAddComponent },
     ], { relativeLinkResolution: 'legacy' }),
-    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

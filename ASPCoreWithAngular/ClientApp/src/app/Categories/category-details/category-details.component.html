@@ -16,17 +16,19 @@
         <table class='table table-striped'>
             <thead>
                 <tr>
+                    <th>CategoryID</th>
                     <th>CategoryCode</th>
                     <th>CategoryName</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let emp of catList">
-                    <td>{{ emp.CategoryCode }}</td>
-                    <td>{{ emp.CategoryName }}</td>
+                <tr *ngFor="let cat of catList">
+                    <td>{{ cat.categoryId }}</td>
+                    <td>{{ cat.categoryCode }}</td>
+                    <td>{{ cat.categoryName }}</td>
                     <td>
-                        <a [routerLink]="['/employee/edit/', emp.employeeId]">Edit</a> |
-                        <a [routerLink]="" (click)="delete(emp.employeeId)">Delete</a>
+                        <a [routerLink]="['/category/edit/', cat.categoryId]">Edit</a> |
+                        <a [routerLink]="" (click)="delete(cat.categoryId)">Delete</a>
                     </td>
                 </tr>
             </tbody>

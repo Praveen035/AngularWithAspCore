@@ -27,8 +27,8 @@ export class CategoryAddComponent implements OnInit {
 
     this.categoryForm = this._fb.group({
       categoryId: 0,
-      CategoryCode: ['', [Validators.required]],
-      CategoryName: ['', [Validators.required]],
+      categoryCode: ['', [Validators.required]],
+      categoryName: ['', [Validators.required]],
     })
   }
 
@@ -82,7 +82,7 @@ export class CategoryAddComponent implements OnInit {
     this._router.navigate(['/dashboard']);
   }
 
-  get CategoryCode() { return this.categoryForm.get('CategoryCode'); }
-  get CategoryName() { return this.categoryForm.get('CategoryName'); }
+  get categoryCode() { return this.categoryForm.get('categoryCode'); }
+  get categoryName() { return this.categoryForm.get('categoryName'); }
 
 }

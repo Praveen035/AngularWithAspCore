@@ -16,11 +16,9 @@
         <table class='table table-striped' *ngIf="empList">
             <thead>
                 <tr>
-                    <!-- <th>EmployeeId</th> -->
                     <th>Name</th>
                     <th>Gender</th>
                     <th>Department</th>
-                    <!-- <th>City</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -29,8 +27,6 @@
                     <td>{{ emp.name }}</td>
                     <td>{{ emp.gender }}</td>
                     <td>{{ emp.department }}</td>
-                    <!-- <td>{{ emp.city }}</td> -->
-                    <td>
                     <td>
                         <a [routerLink]="['/employee/edit/', emp.employeeId]">Edit</a> |
                         <a [routerLink]="" (click)="delete(emp.employeeId)">Delete</a>

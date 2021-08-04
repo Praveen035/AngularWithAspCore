@@ -24,10 +24,11 @@ export class CategoryDetailsComponent implements OnInit {
     this._categoryService.getCategories().subscribe(
       (data: Categories[]) => this.catList = data
     );
+
   }
 
   delete(employeeID) {
-    this._confirmDialogService.openConfirmDialog("Are you sure you want to delete the employee information?")
+    this._confirmDialogService.openConfirmDialog("Are you sure you want to delete the category information?")
       .afterClosed().subscribe(res => {
         if (res) {
           this._categoryService.deleteCategory(employeeID).subscribe(() => {

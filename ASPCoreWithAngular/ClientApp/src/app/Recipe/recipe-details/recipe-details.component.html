@@ -1,0 +1,43 @@
+<div class="container-fluid page">
+    <div class="row">
+        <div class="d-flex page__box p-3 mt-2">Categories
+            <a [routerLink]="['/dashboard']" style="margin-left:83%;">
+                <mat-icon>keyboard_backspace</mat-icon>
+            </a>
+        </div>
+    </div>
+    <div class="page__content shadow p-3 position-relative">
+        <p *ngIf="!recipeList"><em>Loading...</em></p>
+        <p>
+            <a [routerLink]="['/RecipeAdd']">
+                <mat-icon>add_box</mat-icon>
+            </a>
+        </p>
+        <table class='table table-striped'>
+            <thead>
+                <tr>
+                    <th>RecipeCategoryId</th>
+                    <th>RecipeCategoryCode</th>
+                    <th>RecipeCategoryName</th>
+                    <th>RecipeCode</th>
+                    <th>RecipeName</th>
+                    <th>RecipeImage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let recipe of recipeList">
+                    <td>{{ recipe.RecipeCategoryId }}</td>
+                    <td>{{ recipe.RecipeCategoryCode }}</td>
+                    <td>{{ recipe.RecipeCategoryName }}</td>
+                    <td>{{ recipe.RecipeCode }}</td>
+                    <td>{{ recipe.RecipeName }}</td>
+                    <td>{{ recipe.RecipeImage }}</td>
+                    <td>
+                        <a [routerLink]="['/recipe/edit/', recipe.RecipeCategoryId]">Edit</a> |
+                        <a [routerLink]="" (click)="delete(recipe.RecipeCategoryId)">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

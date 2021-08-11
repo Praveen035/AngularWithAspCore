@@ -1,0 +1,63 @@
+<div class="container-fluid page">
+    <div class="row">
+        <div class="d-flex page__box p-3 mt-2">Category
+            <a [routerLink]="['/RecipeDetails']" style="margin-left:85%;">
+                <mat-icon>keyboard_backspace</mat-icon>
+            </a>
+        </div>
+    </div>
+    <div class="page__content shadow p-3 position-relative">
+        <form [formGroup]="recipeForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+            <div class="form-group row">
+                <label class=" control-label col-md-12">RecipeCategoryCode</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" formControlName="RecipeCategoryCode">
+                </div>
+                <span class="text-danger" *ngIf="RecipeCategoryCode?.invalid && formDir.submitted">
+                    RecipeCategoryCode is required.
+                </span>
+            </div>
+            <div class="form-group row">
+                <label class=" control-label col-md-12">RecipeCategoryName</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" formControlName="RecipeCategoryName">
+                </div>
+                <span class="text-danger" *ngIf="RecipeCategoryName?.invalid && formDir.submitted">
+                    RecipeCategoryName is required.
+                </span>
+            </div>
+            <div class="form-group row">
+                <label class=" control-label col-md-12">RecipeCode</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" formControlName="RecipeCode">
+                </div>
+                <span class="text-danger" *ngIf="RecipeCode?.invalid && formDir.submitted">
+                    RecipeCode is required.
+                </span>
+            </div>
+            <div class="form-group row">
+                <label class=" control-label col-md-12">RecipeName</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" formControlName="RecipeName">
+                </div>
+                <span class="text-danger" *ngIf="RecipeName?.invalid && formDir.submitted">
+                    RecipeName is required.
+                </span>
+            </div>
+            <div class="form-group row">
+                <label class=" control-label col-md-12">RecipeImage</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" formControlName="RecipeImage">
+                </div>
+                <span class="text-danger" *ngIf="RecipeImage?.invalid && formDir.submitted">
+                    RecipeImage is required.
+                </span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <button type="submit" class=" btn btn-primary">Save</button>&nbsp;&nbsp;
+                <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

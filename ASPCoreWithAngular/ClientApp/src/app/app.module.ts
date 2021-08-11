@@ -29,6 +29,8 @@ import { CategoryDetailsComponent } from './Categories/category-details/category
 import { ItemAddComponent } from './Item/item-add/item-add.component';
 import { ItemDetailsComponent } from './Item/item-details/item-details.component';
 import { ChartsModule } from 'ng2-charts';
+import { RecipeAddComponent } from './Recipe/recipe-add/recipe-add.component';
+import { RecipeDetailsComponent } from './Recipe/recipe-details/recipe-details.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { ChartsModule } from 'ng2-charts';
     CategoryDetailsComponent,
     ItemAddComponent,
     ItemDetailsComponent,
+    RecipeAddComponent,
+    RecipeDetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -73,11 +77,14 @@ import { ChartsModule } from 'ng2-charts';
       { path: 'registration', component: RegistrationComponent },
       { path: 'CategoryDetails', component: CategoryDetailsComponent },
       { path: 'CategoryAdd', component: CategoryAddComponent },
+      { path: 'RecipeDetails', component: RecipeDetailsComponent },
+      { path: 'RecipeAdd', component: RecipeAddComponent },
       { path: 'ItemDetails', component: ItemDetailsComponent },
       { path: 'ItemAdd', component: ItemAddComponent },
       { path: 'register-employee', component: AddEmployeeComponent },
       { path: 'employee/edit/:id', component: AddEmployeeComponent },
       { path: 'category/edit/:id', component: CategoryAddComponent },
+      { path: 'recipe/edit/:id', component: RecipeAddComponent },
       { path: 'item/edit/:id', component: ItemAddComponent },
     ], { relativeLinkResolution: 'legacy' }),
   ],

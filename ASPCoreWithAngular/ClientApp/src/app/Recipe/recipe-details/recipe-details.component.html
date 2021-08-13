@@ -16,25 +16,25 @@
         <table class='table table-striped'>
             <thead>
                 <tr>
-                    <th>RecipeCategoryId</th>
-                    <th>RecipeCategoryCode</th>
-                    <th>RecipeCategoryName</th>
-                    <th>RecipeCode</th>
-                    <th>RecipeName</th>
-                    <th>RecipeImage</th>
+                    <th>RecipeCategory Id</th>
+                    <th>RecipeCategory Code</th>
+                    <th>RecipeCategory Name</th>
+                    <th>Recipe Code</th>
+                    <th>Recipe Name</th>
+                    <th>Recipe Image</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let recipe of recipeList">
-                    <td>{{ recipe.RecipeCategoryId }}</td>
-                    <td>{{ recipe.RecipeCategoryCode }}</td>
-                    <td>{{ recipe.RecipeCategoryName }}</td>
-                    <td>{{ recipe.RecipeCode }}</td>
-                    <td>{{ recipe.RecipeName }}</td>
-                    <td>{{ recipe.RecipeImage }}</td>
+                    <td>{{ recipe.recipeCategoryId }}</td>
+                    <td>{{ recipe.recipeCategoryCode }}</td>
+                    <td>{{ recipe.recipeCategoryName }}</td>
+                    <td>{{ recipe.recipeCode }}</td>
+                    <td>{{ recipe.recipeName }}</td>
+                    <td>{{ recipe.recipeImage }}</td>
                     <td>
-                        <a [routerLink]="['/recipe/edit/', recipe.RecipeCategoryId]">Edit</a> |
-                        <a [routerLink]="" (click)="delete(recipe.RecipeCategoryId)">Delete</a>
+                        <a [routerLink]="['/recipe/edit/', recipe.recipeCategoryId]">Edit</a> |
+                        <a [routerLink]="" (click)="delete(recipe.recipeCategoryId)">Delete</a>
                     </td>
                 </tr>
             </tbody>

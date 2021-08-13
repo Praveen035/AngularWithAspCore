@@ -12,7 +12,9 @@ export class RecipeDetailsComponent implements OnInit {
 
   public recipeList: Recipe[];
 
-  constructor(private _confirmDialogService: ConfirmDialogService, private _recipeService: RecipeService) { }
+  constructor(private _confirmDialogService: ConfirmDialogService, private _recipeService: RecipeService) {
+    this.getRecipelist();
+  }
 
   ngOnInit(): void {
   }

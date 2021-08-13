@@ -15,30 +15,30 @@ export class RecipeAddComponent implements OnInit {
 
   recipeForm: FormGroup;
   title = 'Create';
-  recipeId: number;
+  recipeCategoryId: number;
   errorMessage: any;
   constructor(private confirmDialogService: ConfirmDialogService, private notificationService: NotificationService,
     private recipeService: RecipeService, private _router: Router, private _fb: FormBuilder, private _avRoute: ActivatedRoute) {
 
     if (this._avRoute.snapshot.params['id']) {
-      this.recipeId = this._avRoute.snapshot.params['id'];
+      this.recipeCategoryId = this._avRoute.snapshot.params['id'];
     }
 
     this.recipeForm = this._fb.group({
-      recipeId: 0,
-      RecipeCategoryCode: ['', [Validators.required]],
-      RecipeCategoryName: ['', [Validators.required]],
-      RecipeCode: ['', [Validators.required]],
-      RecipeName: ['', [Validators.required]],
-      RecipeImage: ['', [Validators.required]]
+      recipeCategoryId: 0,
+      recipeCategoryCode: ['', [Validators.required]],
+      recipeCategoryName: ['', [Validators.required]],
+      recipeCode: ['', [Validators.required]],
+      recipeName: ['', [Validators.required]],
+      recipeImage: ['', [Validators.required]]
     })
   }
 
   ngOnInit(): void {
 
-    if (this.recipeId > 0) {
+    if (this.recipeCategoryId > 0) {
       this.title = 'Edit';
-      this.recipeService.getRecipeById(this.recipeId)
+      this.recipeService.getRecipeById(this.recipeCategoryId)
         .subscribe((response: Recipe) => {
           this.recipeForm.setValue(response);
         }, error => console.error(error));
@@ -85,9 +85,9 @@ export class RecipeAddComponent implements OnInit {
     this._router.navigate(['/dashboard']);
   }
 
-  get RecipeCategoryCode() { return this.recipeForm.get('RecipeCategoryCode'); }
-  get RecipeCategoryName() { return this.recipeForm.get('RecipeCategoryName'); }
-  get RecipeCode() { return this.recipeForm.get('RecipeCode'); }
-  get RecipeName() { return this.recipeForm.get('RecipeName'); }
-  get RecipeImage() { return this.recipeForm.get('RecipeImage'); }
+  get recipeCategoryCode() { return this.recipeForm.get('recipeCategoryCode'); }
+  get recipeCategoryName() { return this.recipeForm.get('recipeCategoryName'); }
+  get recipeCode() { return this.recipeForm.get('recipeCode'); }
+  get recipeName() { return this.recipeForm.get('recipeName'); }
+  get recipeImage() { return this.recipeForm.get('recipeImage'); }
 }

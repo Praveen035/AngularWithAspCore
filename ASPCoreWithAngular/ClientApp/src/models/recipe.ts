@@ -1,9 +1,9 @@
 export class Recipe {
-    RecipeCategoryId: number;
-    RecipeCategoryCode: string;
-    RecipeCategoryName: string;
-    RecipeCode: string;
-    RecipeName: string;
-    RecipeImage: string;
+    recipeCategoryId: number;
+    recipeCategoryCode: string;
+    recipeCategoryName: string;
+    recipeCode: string;
+    recipeName: string;
+    recipeImage: string;
 }
 

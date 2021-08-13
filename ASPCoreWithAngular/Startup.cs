@@ -25,6 +25,7 @@ namespace ASPCoreWithAngular
             services.AddTransient<IEmployee, EmployeeDataAccessLayer>();
             services.AddTransient<ICategory, CategoryDataAccessLayer>();
             services.AddTransient<Iitem, ItemDataAccessLayer>();
+            services.AddTransient<IRecipe, RecipeDataAccessLayer>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
 
             // In production, the Angular files will be served from this directory

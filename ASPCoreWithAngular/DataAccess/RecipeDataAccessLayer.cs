@@ -27,7 +27,7 @@ namespace ASPCoreWithAngular.DataAccess
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("spGetAllCategories", con);
+                    SqlCommand cmd = new SqlCommand("spGetAllRecipes", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     con.Open();
@@ -36,6 +36,7 @@ namespace ASPCoreWithAngular.DataAccess
                     while (rdr.Read())
                     {
                         Recipe recipe = new Recipe();
+                        recipe.RecipeCategoryId = Convert.ToInt32(rdr["RecipeCategoryId"]);
                         recipe.RecipeCategoryCode = rdr["RecipeCategoryCode"].ToString();
                         recipe.RecipeCategoryName = rdr["RecipeCategoryName"].ToString();
                         recipe.RecipeCode = rdr["RecipeCode"].ToString();
@@ -60,7 +61,7 @@ namespace ASPCoreWithAngular.DataAccess
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("spAddCategory", con);
+                    SqlCommand cmd = new SqlCommand("spAddRecipe", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("@RecipeCategoryCode", recipe.RecipeCategoryCode);
@@ -87,9 +88,10 @@ namespace ASPCoreWithAngular.DataAccess
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("spUpdateCategory", con);
+                    SqlCommand cmd = new SqlCommand("spUpdateRecipe", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
+                    cmd.Parameters.AddWithValue("@RecipeCategoryId", recipe.RecipeCategoryId);
                     cmd.Parameters.AddWithValue("@RecipeCategoryCode", recipe.RecipeCategoryCode);
                     cmd.Parameters.AddWithValue("@RecipeCategoryName", recipe.RecipeCategoryName);
                     cmd.Parameters.AddWithValue("@RecipeCode", recipe.RecipeCode);
@@ -116,7 +118,7 @@ namespace ASPCoreWithAngular.DataAccess
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string sqlQuery = "SELECT * FROM tblCategory WHERE CategoryId= " + id;
+                    string sqlQuery = "SELECT * FROM tblRecipe WHERE RecipeCategoryId= " + id;
                     SqlCommand cmd = new SqlCommand(sqlQuery, con);
 
                     con.Open();
@@ -146,10 +148,10 @@ namespace ASPCoreWithAngular.DataAccess
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("spDeleteCategory", con);
+                    SqlCommand cmd = new SqlCommand("spDeleteRecipe", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@CategoryId", id);
+                    cmd.Parameters.AddWithValue("@RecipeCategoryId", id);
 
                     con.Open();
                     cmd.ExecuteNonQuery();

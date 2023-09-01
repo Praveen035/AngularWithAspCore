@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmDialogService } from 'src/app/confirm-dialog/confirm-dialog.service';
 import { NotificationService } from 'src/app/notification.service';
@@ -13,12 +13,12 @@ import { Categories } from 'src/models/categories';
 })
 export class CategoryAddComponent implements OnInit {
 
-  categoryForm: FormGroup;
+  categoryForm: UntypedFormGroup;
   title = 'Create';
   categoryId: number;
   errorMessage: any;
 
-  constructor(private _router: Router, private _fb: FormBuilder, private _categoryService: CategoryService,
+  constructor(private _router: Router, private _fb: UntypedFormBuilder, private _categoryService: CategoryService,
     private confirmdialogService: ConfirmDialogService, private notifyService: NotificationService, private _avRoute: ActivatedRoute) {
 
     if (this._avRoute.snapshot.params['id']) {

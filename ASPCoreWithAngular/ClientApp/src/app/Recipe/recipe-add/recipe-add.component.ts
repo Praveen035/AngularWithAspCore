@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmDialogService } from 'src/app/confirm-dialog/confirm-dialog.service';
 import { NotificationService } from 'src/app/notification.service';
@@ -13,12 +13,12 @@ import { Recipe } from 'src/models/recipe';
 })
 export class RecipeAddComponent implements OnInit {
 
-  recipeForm: FormGroup;
+  recipeForm: UntypedFormGroup;
   title = 'Create';
   recipeCategoryId: number;
   errorMessage: any;
   constructor(private confirmDialogService: ConfirmDialogService, private notificationService: NotificationService,
-    private recipeService: RecipeService, private _router: Router, private _fb: FormBuilder, private _avRoute: ActivatedRoute) {
+    private recipeService: RecipeService, private _router: Router, private _fb: UntypedFormBuilder, private _avRoute: ActivatedRoute) {
 
     if (this._avRoute.snapshot.params['id']) {
       this.recipeCategoryId = this._avRoute.snapshot.params['id'];

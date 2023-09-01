@@ -34,7 +34,7 @@
                     <td>{{ recipe.recipeImage }}</td>
                     <td>
                         <a [routerLink]="['/recipe/edit/', recipe.recipeCategoryId]">Edit</a> |
-                        <a [routerLink]="" (click)="delete(recipe.recipeCategoryId)">Delete</a>
+                        <a [routerLink]="[]" (click)="delete(recipe.recipeCategoryId)">Delete</a>
                     </td>
                 </tr>
             </tbody>

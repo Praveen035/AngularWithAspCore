@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from 'src/app/notification.service';
 import { ItemService } from 'src/app/services/item.service';
@@ -13,11 +13,11 @@ import { ConfirmDialogService } from 'src/app/confirm-dialog/confirm-dialog.serv
 })
 export class ItemAddComponent implements OnInit {
 
-  itemForm: FormGroup;
+  itemForm: UntypedFormGroup;
   title = 'Create';
   itemId: number;
 
-  constructor(private _router: Router, private _fb: FormBuilder, private _itemService: ItemService,
+  constructor(private _router: Router, private _fb: UntypedFormBuilder, private _itemService: ItemService,
     private notifyService: NotificationService, private _avRoute: ActivatedRoute, private _confirmDialogService: ConfirmDialogService) {
 
     if (this._avRoute.snapshot.params['id']) {

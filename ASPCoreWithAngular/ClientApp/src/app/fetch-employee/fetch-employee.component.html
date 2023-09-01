@@ -29,7 +29,7 @@
                     <td>{{ emp.department }}</td>
                     <td>
                         <a [routerLink]="['/employee/edit/', emp.employeeId]">Edit</a> |
-                        <a [routerLink]="" (click)="delete(emp.employeeId)">Delete</a>
+                        <a [routerLink]="[]" (click)="delete(emp.employeeId)">Delete</a>
                     </td>
                 </tr>
             </tbody>

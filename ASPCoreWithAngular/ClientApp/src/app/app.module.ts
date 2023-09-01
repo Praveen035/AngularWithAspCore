@@ -86,7 +86,7 @@ import { RecipeDetailsComponent } from './Recipe/recipe-details/recipe-details.c
       { path: 'category/edit/:id', component: CategoryAddComponent },
       { path: 'recipe/edit/:id', component: RecipeAddComponent },
       { path: 'item/edit/:id', component: ItemAddComponent },
-    ], { relativeLinkResolution: 'legacy' }),
+    ], {}),
   ],
   providers: [],
   bootstrap: [AppComponent]

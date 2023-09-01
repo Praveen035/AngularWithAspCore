@@ -30,7 +30,7 @@
                     <td>{{ item.status }}</td>
                     <td>
                         <a [routerLink]="['/item/edit/', item.itemId]">Edit</a> |
-                        <a [routerLink]="" (click)="delete(item.itemId)">Delete</a>
+                        <a [routerLink]="[]" (click)="delete(item.itemId)">Delete</a>
                     </td>
                 </tr>
             </tbody>

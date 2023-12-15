@@ -30,7 +30,7 @@ export class RecipeAddComponent implements OnInit {
       recipeCategoryName: ['', [Validators.required]],
       recipeCode: ['', [Validators.required]],
       recipeName: ['', [Validators.required]],
-      recipeImage: ['', [Validators.required]]
+      recipeImage: ['']
     })
   }
 

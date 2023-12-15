@@ -1,6 +1,6 @@
 {
-  "compileOnSave": false,
-  "skipLibCheck":true,
+  "compileOnSave": true,
+  "skipLibCheck": true,
   "compilerOptions": {
     "baseUrl": "./",
     "downlevelIteration": true,
